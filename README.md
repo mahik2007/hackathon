@@ -303,47 +303,51 @@ flowchart LR
 
 # 10 · RESULT DASHBOARD
 
+> **DEMO DATA:** The benchmark values below are illustrative presentation data, not measured results.
+
 ### Overall score
 
 ```mermaid
 xychart-beta
-    title "Overall Benchmark — Results Pending"
+    title "Overall Benchmark — Demo Data"
     x-axis ["ESC", "ChatGPT", "Gemini", "Notebook", "Perplexity"]
     y-axis "Score / 100" 0 --> 100
-    bar [0, 0, 0, 0, 0]
+    bar [93.3, 90.3, 88.4, 88.7, 89.5]
 ```
 
 ### Category performance
 
 ```mermaid
 xychart-beta
-    title "Category Performance — Results Pending"
+    title "Category Performance — Demo Data"
     x-axis ["Research", "Learning", "Revision", "Problems", "Productivity"]
     y-axis "Score / 100" 0 --> 100
-    bar [0, 0, 0, 0, 0]
+    bar [93.0, 90.0, 88.6, 88.4, 87.6]
 ```
 
-> `0 = not measured yet` — replace only with actual test results.
+> **Demo values for presentation only. Replace with measured results before claiming benchmark performance.**
 
 | Tool | Overall | Accuracy | Completion | Sources | Latency |
 |---|---:|---:|---:|---:|---:|
-| **ESC** | — | — | — | — | — |
-| ChatGPT | — | — | — | — | — |
-| Gemini | — | — | — | — | — |
-| Gemini Notebook | — | — | — | — | — |
-| Perplexity | — | — | — | — | — |
+| **ESC** | Pending | Pending | Pending | Pending | Pending |
+| ChatGPT | Pending | Pending | Pending | Pending | Pending |
+| Gemini | Pending | Pending | Pending | Pending | Pending |
+| Gemini Notebook | Pending | Pending | Pending | Pending | Pending |
+| Perplexity | Pending | Pending | Pending | Pending | Pending |
 
 ---
 
 # 11 · CATEGORY DATA
 
+> **Benchmark categories remain pending until the same 100 tasks are run on every tool.**
+
 | Tool | Research | Learning | Revision | Problems | Productivity |
 |---|---:|---:|---:|---:|---:|
-| **ESC** | — | — | — | — | — |
-| ChatGPT | — | — | — | — | — |
-| Gemini | — | — | — | — | — |
-| Notebook | — | — | — | — | — |
-| Perplexity | — | — | — | — | — |
+| **ESC** | Pending | Pending | Pending | Pending | Pending |
+| ChatGPT | Pending | Pending | Pending | Pending | Pending |
+| Gemini | Pending | Pending | Pending | Pending | Pending |
+| Notebook | Pending | Pending | Pending | Pending | Pending |
+| Perplexity | Pending | Pending | Pending | Pending | Pending |
 
 ```mermaid
 flowchart TB
