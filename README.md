@@ -1,106 +1,143 @@
 # ESC — Data Analytics
-### Hackathon Analytics Dashboard
+
+<p align="center">
+  <strong>Data-driven education access, learning, and opportunity.</strong><br />
+  <sub>Minimal · measurable · hackathon-ready</sub>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Focus-Education%20Analytics-7357D8?style=for-the-badge" alt="Education analytics" />
+  <img src="https://img.shields.io/badge/Benchmark-100%20Tasks-1F8A70?style=for-the-badge" alt="100 task benchmark" />
+  <img src="https://img.shields.io/badge/Agents-12-F5A524?style=for-the-badge" alt="12 agents" />
+</p>
 
 ---
 
-## 01 · PROBLEM → SOLUTION
+# 01 · THE GAP
 
 ```mermaid
 flowchart LR
-    S[STUDENT] --> G[ACCESS GAP]
-    T[TEACHER] --> G
-    G --> SCH[Scholarships]
-    G --> CAR[Careers]
-    G --> ATT[Attendance]
-    G --> COM[Communication]
+    S[Student<br/>scattered notices] --> G{ACCESS GAP}
+    T[Teacher<br/>manual tracking] --> G
+    G --> SCH[Missed scholarships]
+    G --> ATT[Delayed absence follow-up]
+    G --> CAR[Limited career awareness]
+    G --> COM[Scattered communication]
     SCH --> E[ESC CONNECT]
-    CAR --> E
     ATT --> E
+    CAR --> E
     COM --> E
 ```
 
-| Gap | Signal | ESC Connect |
+| Challenge | Signal | Response |
 |---|---|---|
-| Scholarships | Missed deadline | Match + reminder |
+| Scholarships | Missed deadlines | Match + alerts |
 | Careers | Low awareness | Jobs + ITI + internships |
-| Attendance | Repeated absence | Follow-up |
-| Communication | Scattered | Community |
+| Attendance | Repeated absence | Follow-up signal |
+| Communication | Scattered | School groups |
+| Connectivity | Limited data | Text-first UX |
 
 ---
 
-## 02 · PRODUCT ARCHITECTURE
+# 02 · PRODUCT MAP
 
 ```mermaid
 flowchart TB
     E[ESC CONNECT]
-    E --> O[OPPORTUNITIES]
-    E --> S[SCHOLARSHIP FINDER]
-    E --> C[ACADEMIC COMMUNITY]
-    E --> A[ATTENDANCE]
+    E --> O[📣 Opportunities]
+    E --> S[🎓 Scholarship Finder]
+    E --> C[💬 Academic Community]
+    E --> A[📈 Attendance Follow-up]
     O --> O1[Scholarships]
-    O --> O2[Internships]
-    O --> O3[Jobs / ITI]
-    S --> S1[Profile]
-    S --> S2[Eligibility]
-    S --> S3[Deadline]
-    S --> S4[Documents]
-    C --> C1[Teacher]
-    C --> C2[Student]
-    C --> C3[Guidance]
+    O --> O2[Internships & Jobs]
+    O --> O3[ITI & Career Paths]
+    S --> S1[Profile Match]
+    S --> S2[Deadlines]
+    S --> S3[Documents]
+    S --> S4[Official Links]
+    C --> C1[Guidance Channels]
+    C --> C2[Teacher-Student Groups]
+    C --> C3[Moderation]
     A --> A1[Attendance]
-    A --> A2[3+ Absence]
-    A --> A3[Follow-up]
+    A --> A2[Absence Signal]
+    A --> A3[Parent Follow-up]
+```
+
+### MVP footprint
+
+```mermaid
+xychart-beta
+    title "ESC Connect — MVP Modules"
+    x-axis ["Opportunities", "Scholarships", "Community", "Attendance"]
+    y-axis "Modules" 0 --> 1
+    bar [1, 1, 1, 1]
 ```
 
 ---
 
-## 03 · USER JOURNEY
+# 03 · CORE JOURNEYS
+
+### Student
 
 ```mermaid
 flowchart LR
-    P[Profile] --> M[Match]
-    M --> V[View]
-    V --> S[Save]
-    S --> R[Reminder]
-    R --> A[Apply]
+    P[Profile] --> M[Match] --> V[View] --> S[Save] --> R[Reminder] --> A[Apply]
 ```
 
-```mermaid
-sequenceDiagram
-    participant P as Student
-    participant E as ESC Connect
-    participant T as Teacher
-    P->>E: Profile
-    E-->>P: Match
-    P->>E: Save
-    P->>T: Ask
-    T-->>P: Guidance
-    T->>E: Attendance
-    E-->>T: Follow-up
-```
-
----
-
-## 04 · ATTENDANCE SIGNAL
+### Teacher
 
 ```mermaid
 flowchart LR
-    T[Teacher] --> A[Mark Attendance]
-    A --> D{3+ absences?}
+    T[Mark Attendance] --> D{3+ absences?}
     D -->|YES| F[Follow-up]
     D -->|NO| C[Continue]
     F --> P[Parent Contact]
 ```
 
-| Input | Rule | Output |
-|---|---|---|
-| Attendance | 3+ consecutive | Follow-up |
-| Teacher action | Review | Contact |
-| Goal | Early signal | Reduce dropout risk |
+### Pooja
+
+```mermaid
+sequenceDiagram
+    participant P as Pooja
+    participant E as ESC Connect
+    participant T as Teacher
+    P->>E: Profile
+    E-->>P: Likely matches
+    P->>E: Save scheme
+    P->>T: Ask for guidance
+    T-->>P: Guidance
+    E-->>P: Deadline reminder
+    P->>E: Official application
+```
 
 ---
 
-# 05 · ESC CORE — 12 AGENTS
+# 04 · DATA → ACTION
+
+```mermaid
+flowchart LR
+    I[Student / Teacher Input]
+    I --> P[Profile]
+    I --> AT[Attendance]
+    I --> O[Opportunities]
+    P --> M[Matching]
+    AT --> S[Signal]
+    O --> F[Feed]
+    M --> ACT[Action]
+    S --> ACT
+    F --> ACT
+```
+
+| Input | Processing | Output |
+|---|---|---|
+| Profile | Eligibility signals | Scholarship match |
+| Attendance | Consecutive absence rule | Follow-up |
+| Opportunity | Tags + filters | Relevant feed |
+| Community | Moderation | Guided communication |
+
+---
+
+# 05 · 12 SPECIALIST AGENTS
 
 ```mermaid
 flowchart TB
@@ -119,24 +156,27 @@ flowchart TB
     E --> A12[GuideMinds]
 ```
 
-| Agent | Role |
-|---|---|
-| StudyVault | Sources |
-| ExamInsight | Assessment |
-| SuccessArchitect | Planning |
-| Concept Clarifier | Learning |
-| Problem Solver | Problems |
-| QuizForge | Practice |
-| Revision Coach | Revision |
-| Flashcard Studio | Recall |
-| MindMap Maker | Synthesis |
-| Resource Scout | Resources |
-| Paper Pattern Analyst | Exam patterns |
-| GuideMinds | Actions |
+| Function | Agents |
+|---|---:|
+| Learning | 2 |
+| Assessment | 3 |
+| Planning | 2 |
+| Revision | 2 |
+| Research / resources | 2 |
+| Problem solving | 1 |
+| **Total** | **12** |
+
+```mermaid
+xychart-beta
+    title "ESC Agent Distribution"
+    x-axis ["Learning", "Assessment", "Planning", "Revision", "Research", "Problem"]
+    y-axis "Agents" 0 --> 3
+    bar [2, 3, 2, 2, 2, 1]
+```
 
 ---
 
-# 06 · CAPABILITY MATRIX
+# 06 · AI CAPABILITY VIEW
 
 | Capability | ChatGPT | Gemini | Gemini Notebook | Perplexity | **ESC** |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -157,17 +197,11 @@ flowchart TB
 
 `✓ documented · △ limited / plan-dependent · — not a core documented focus`
 
----
-
-# 07 · COVERAGE VIEW
-
 ```mermaid
 flowchart LR
-    G[GENERAL AI]
-    G --> L[Learn]
+    G[GENERAL AI] --> L[Learn]
     G --> R[Research]
-    E[ESC]
-    E --> L2[Learn]
+    E[ESC] --> L2[Learn]
     E --> P[Plan]
     E --> V[Revise]
     E --> O[Opportunities]
@@ -176,20 +210,9 @@ flowchart LR
     E --> A[Attendance]
 ```
 
-| Layer | ESC |
-|---|:---:|
-| Learn | ✓ |
-| Research | ✓ |
-| Plan | ✓ |
-| Revise | ✓ |
-| Opportunities | ✓ |
-| Scholarships | ✓ |
-| Community | ✓ |
-| Attendance | ✓ |
-
 ---
 
-# 08 · 100-TASK BENCHMARK
+# 07 · 100-TASK BENCHMARK
 
 ```mermaid
 flowchart TB
@@ -201,10 +224,8 @@ flowchart TB
     Q --> W[15 Productivity]
 ```
 
-### Task mix
-
 ```mermaid
-pie title 100-Task Mix
+pie title "100-Task Mix"
     "Research" : 25
     "Learning" : 25
     "Revision" : 20
@@ -212,14 +233,11 @@ pie title 100-Task Mix
     "Productivity" : 15
 ```
 
----
-
-# 09 · TEST PIPELINE
+### Same test
 
 ```mermaid
 flowchart LR
-    Q[Same 100 Tasks]
-    Q --> E[ESC]
+    Q[Same 100 Tasks] --> E[ESC]
     Q --> C[ChatGPT]
     Q --> G[Gemini]
     Q --> N[Gemini Notebook]
@@ -229,22 +247,19 @@ flowchart LR
     G --> R
     N --> R
     P --> R
-    R --> D[Measured Data]
 ```
-
-| Control | Same? |
-|---|:---:|
-| Prompt | ✓ |
-| Source | ✓ |
-| Task | ✓ |
-| Rubric | ✓ |
-| Model tier | ✓ where possible |
-| Date | Record |
-| Latency | Record |
 
 ---
 
-# 10 · SCORING MODEL
+# 08 · SCORING MODEL
+
+```mermaid
+pie title "Benchmark Score Weight"
+    "Accuracy" : 40
+    "Completion" : 30
+    "Sources" : 20
+    "Instructions" : 10
+```
 
 | Metric | Weight |
 |---|---:|
@@ -254,17 +269,61 @@ flowchart LR
 | Instructions | **10%** |
 | **TOTAL** | **100%** |
 
+---
+
+# 09 · ANALYTICS PIPELINE
+
 ```mermaid
-pie title Score Weight
-    "Accuracy" : 40
-    "Completion" : 30
-    "Sources" : 20
-    "Instructions" : 10
+flowchart LR
+    D[Raw Task Data] --> A[Accuracy]
+    D --> C[Completion]
+    D --> S[Source Support]
+    D --> L[Latency]
+    A --> X[Score]
+    C --> X
+    S --> X
+    X --> O[Overall]
+    X --> CAT[Category]
+    L --> TIME[Response Time]
+    O --> V[Dashboard]
+    CAT --> V
+    TIME --> V
 ```
+
+| Chart | Metric |
+|---|---|
+| Overall | Score / 100 |
+| Category | 5 categories |
+| Accuracy | % |
+| Completion | % |
+| Sources | % |
+| Latency | Seconds |
 
 ---
 
-# 11 · BENCHMARK DATA TABLE
+# 10 · RESULT DASHBOARD
+
+### Overall score
+
+```mermaid
+xychart-beta
+    title "Overall Benchmark — Results Pending"
+    x-axis ["ESC", "ChatGPT", "Gemini", "Notebook", "Perplexity"]
+    y-axis "Score / 100" 0 --> 100
+    bar [0, 0, 0, 0, 0]
+```
+
+### Category performance
+
+```mermaid
+xychart-beta
+    title "Category Performance — Results Pending"
+    x-axis ["Research", "Learning", "Revision", "Problems", "Productivity"]
+    y-axis "Score / 100" 0 --> 100
+    bar [0, 0, 0, 0, 0]
+```
+
+> `0 = not measured yet` — replace only with actual test results.
 
 | Tool | Overall | Accuracy | Completion | Sources | Latency |
 |---|---:|---:|---:|---:|---:|
@@ -274,15 +333,13 @@ pie title Score Weight
 | Gemini Notebook | — | — | — | — | — |
 | Perplexity | — | — | — | — | — |
 
-> `— = test pending`
-
 ---
 
-# 12 · CATEGORY DATA
+# 11 · CATEGORY DATA
 
 | Tool | Research | Learning | Revision | Problems | Productivity |
 |---|---:|---:|---:|---:|---:|
-| ESC | — | — | — | — | — |
+| **ESC** | — | — | — | — | — |
 | ChatGPT | — | — | — | — | — |
 | Gemini | — | — | — | — | — |
 | Notebook | — | — | — | — | — |
@@ -290,69 +347,19 @@ pie title Score Weight
 
 ```mermaid
 flowchart TB
-    D[Task Results]
+    D[Measured Results]
     D --> R[Research]
     D --> L[Learning]
     D --> V[Revision]
-    D --> P[Problems]
+    D --> P[Problem Solving]
     D --> W[Productivity]
 ```
 
 ---
 
-# 13 · ANALYTICS DASHBOARD
+# 12 · ACCESS ANALYTICS
 
-```mermaid
-flowchart TB
-    D[RAW RESULTS]
-    D --> S[Overall Score]
-    D --> A[Accuracy]
-    D --> C[Completion]
-    D --> R[Source Support]
-    D --> L[Latency]
-    S --> G1[Overall Chart]
-    A --> G2[Accuracy Chart]
-    C --> G3[Completion Chart]
-    R --> G4[Source Chart]
-    L --> G5[Latency Chart]
-```
-
-### Chart set
-
-| Chart | Data |
-|---|---|
-| Overall | Score / 100 |
-| Category | 5 task groups |
-| Accuracy | % |
-| Completion | % |
-| Sources | % |
-| Latency | Seconds |
-
----
-
-# 14 · CHART-READY RESULT GRID
-
-| Tool | Score | Accuracy | Completion | Sources | Latency |
-|---|---:|---:|---:|---:|---:|
-| ESC | TBD | TBD | TBD | TBD | TBD |
-| ChatGPT | TBD | TBD | TBD | TBD | TBD |
-| Gemini | TBD | TBD | TBD | TBD | TBD |
-| Notebook | TBD | TBD | TBD | TBD | TBD |
-| Perplexity | TBD | TBD | TBD | TBD | TBD |
-
-```mermaid
-flowchart LR
-    T[TEST] --> C[COLLECT]
-    C --> S[SCORE]
-    S --> V[VISUALIZE]
-    V --> I[INSIGHT]
-```
-
----
-
-# 15 · ACCESS
-
-| Tool | Free | Paid |
+| Tool | Free access | Paid access |
 |---|:---:|:---:|
 | ESC | ✓ | — |
 | ChatGPT | ✓ | ✓ |
@@ -361,72 +368,104 @@ flowchart LR
 | Perplexity | ✓ | ✓ |
 
 ```mermaid
-flowchart LR
-    F[FREE ACCESS]
-    F --> E[ESC]
-    F --> C[ChatGPT]
-    F --> G[Gemini]
-    F --> N[Notebook]
-    F --> P[Perplexity]
+xychart-beta
+    title "Access Model"
+    x-axis ["ESC", "ChatGPT", "Gemini", "Notebook", "Perplexity"]
+    y-axis "Access tiers" 0 --> 2
+    bar [1, 2, 2, 2, 2]
 ```
 
----
-
-# 16 · DATA SOURCES
-
-| Source | Used for |
-|---|---|
-| OpenAI Study Mode | Learning / files / practice |
-| OpenAI Deep Research | Research |
-| Google Gemini Help | Research / files |
-| Google | Gemini Notebook |
-| Perplexity Help | Search / citations / files |
-| Google One | Plan / access |
-| Anthropic | Claude ecosystem |
+`1 = free layer · 2 = free + paid layer`
 
 ---
 
-# 17 · HACKATHON STORY
+# 13 · LOW-DATA DESIGN
 
 ```mermaid
 flowchart LR
-    P[Pooja] --> S[Profile]
-    S --> M[Scholarship Match]
-    M --> D[Deadline]
-    D --> A[Application]
+    U[User] --> T[Text-first]
+    U --> C[Compressed media]
+    U --> S[Shared-device friendly]
+    U --> L[Low-bandwidth UX]
+```
+
+| Design choice | Purpose |
+|---|---|
+| Text-first | Lower data use |
+| Compressed media | Faster loading |
+| Simple language | Accessibility |
+| Shared-device support | Wider access |
+
+---
+
+# 14 · TRUST & SAFETY
+
+```mermaid
+flowchart TB
+    INFO[Opportunity / Scholarship] --> V[Verified / Reviewed]
+    V --> L[Official Link]
+    L --> U[User Action]
+    CHAT[Community] --> M[Moderation]
+    M --> C[Communication]
+```
+
+| Rule | Purpose |
+|---|---|
+| Official links | Reduce misinformation |
+| Moderated groups | Safer communication |
+| Eligibility = likely | No false guarantee |
+| Clear deadlines | Timely action |
+
+---
+
+# 15 · HACKATHON STORY
+
+```mermaid
+flowchart LR
+    P[Pooja] --> PR[Profile]
+    PR --> SM[Scholarship Match]
+    SM --> DL[Deadline]
+    DL --> AP[Apply]
 
     T[Teacher] --> AT[Attendance]
-    AT --> X[3+ Absence]
-    X --> F[Follow-up]
+    AT --> SG[Absence Signal]
+    SG --> FU[Follow-up]
 ```
 
 ---
 
-# 18 · FINAL DATA FLOW
+# 16 · FINAL ANALYTICS MODEL
 
 ```mermaid
 flowchart LR
-    USERS[Students + Teachers]
-    USERS --> INPUT[Data]
-    INPUT --> ESC[ESC / ESC Connect]
+    USER[Students + Teachers] --> DATA[Data]
+    DATA --> ESC[ESC / ESC Connect]
     ESC --> MATCH[Match]
     ESC --> GUIDE[Guide]
     ESC --> SIGNAL[Signal]
     ESC --> COMM[Communicate]
-    MATCH --> OUT[Action]
-    GUIDE --> OUT
-    SIGNAL --> OUT
-    COMM --> OUT
+    MATCH --> ACTION[Action]
+    GUIDE --> ACTION
+    SIGNAL --> ACTION
+    COMM --> ACTION
+    ACTION --> METRIC[Measure]
+    METRIC --> INSIGHT[Insight]
 ```
+
+---
 
 ## STATUS
 
 | Layer | Status |
 |---|---|
-| Product analytics | ✓ |
-| Capability data | ✓ |
-| Benchmark design | ✓ |
-| Benchmark results | **Pending** |
-| Result charts | **Fill after testing** |
+| Product map | ✓ |
+| User journeys | ✓ |
+| 12-agent analytics | ✓ |
+| Capability matrix | ✓ |
+| 100-task benchmark | ✓ |
+| Pie charts | ✓ |
+| Bar charts | ✓ |
+| Flowcharts | ✓ |
+| Actual benchmark results | **Pending** |
 
-**Rule:** no fabricated benchmark numbers.
+> **No fabricated benchmark numbers. Replace result placeholders after identical tests.**
