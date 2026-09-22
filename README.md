@@ -1,220 +1,236 @@
 # ESC — Data Analytics
 
-## 1. GAP
+## 01 · GAP
 
 ```mermaid
 flowchart LR
-    S[Students] --> G[Access Gap]
-    T[Teachers] --> G
-    G --> A[Scholarships]
-    G --> B[Career Access]
-    G --> C[Attendance]
-    G --> D[Communication]
-    A --> E[ESC Connect]
-    B --> E
-    C --> E
-    D --> E
+S[Student] --> G[ACCESS GAP]
+T[Teacher] --> G
+G --> A[Scholarship]
+G --> B[Career]
+G --> C[Attendance]
+G --> D[Communication]
+A --> E[ESC CONNECT]
+B --> E
+C --> E
+D --> E
 ```
 
-```mermaid
-flowchart TB
-    P[Pooja] --> S[Scattered information]
-    S --> M[Missed opportunity]
-    M --> E[ESC Connect]
-    E --> F[Match]
-    F --> R[Reminder]
-    R --> L[Official Link]
-```
-
-| Gap | ESC Connect |
+| Problem | Module |
 |---|---|
-| Scholarships | Match + deadline |
-| Careers | Jobs + ITI + internships |
-| Attendance | Absence signal |
-| Communication | Groups + guidance |
+| Scholarships | Finder |
+| Jobs / ITI | Opportunities |
+| Absence | Follow-up |
+| Communication | Community |
 
 ---
 
-## 2. PRODUCT MAP
+## 02 · ESC CONNECT
 
 ```mermaid
 flowchart TB
-    E[ESC Connect]
-    E --> O[Opportunities]
-    E --> S[Scholarships]
-    E --> C[Community]
-    E --> A[Attendance]
-    O --> O1[Jobs]
-    O --> O2[Internships]
-    O --> O3[ITI]
-    S --> S1[Profile]
-    S --> S2[Documents]
-    S --> S3[Deadline]
-    C --> C1[Teacher]
-    C --> C2[Student]
-    A --> A1[Absence]
-    A --> A2[Follow-up]
+E[ESC CONNECT]
+E --> O[OPPORTUNITIES]
+E --> S[SCHOLARSHIPS]
+E --> C[COMMUNITY]
+E --> A[ATTENDANCE]
+O --> O1[Jobs]
+O --> O2[Internships]
+O --> O3[ITI]
+S --> S1[Profile]
+S --> S2[Match]
+S --> S3[Deadline]
+C --> C1[Teacher]
+C --> C2[Student]
+A --> A1[Absence]
+A --> A2[Follow-up]
 ```
 
----
-
-## 3. USER FLOW
+## 03 · STUDENT FLOW
 
 ```mermaid
 flowchart LR
-    U[Student] --> P[Profile]
-    P --> M[Match]
-    M --> V[View]
-    V --> S[Save]
-    S --> R[Reminder]
-    R --> A[Apply]
+P[Profile] --> M[Match] --> V[View] --> S[Save] --> R[Reminder] --> A[Apply]
 ```
 
 ```mermaid
 sequenceDiagram
-    participant S as Student
-    participant E as ESC Connect
-    participant T as Teacher
-    S->>E: Profile
-    E-->>S: Matches
-    S->>E: Save
-    S->>T: Ask
-    T-->>S: Guidance
-    T->>E: Attendance
-    E-->>T: Follow-up
+S->>E: Profile
+E-->>S: Match
+S->>E: Save
+S->>T: Ask
+T-->>S: Guidance
 ```
 
 ---
 
-## 4. ATTENDANCE
+## 04 · ATTENDANCE
 
 ```mermaid
 flowchart LR
-    T[Teacher] --> A[Attendance]
-    A --> D{3+ absences?}
-    D -->|Yes| F[Follow-up]
-    D -->|No| C[Continue]
-    F --> P[Parent contact]
+T[Teacher] --> A[Attendance] --> D{3+?}
+D -->|Yes| F[Follow-up]
+D -->|No| C[Continue]
+F --> P[Parent]
 ```
 
 ---
 
-## 5. ESC vs AI TOOLS
+## 05 · CAPABILITY MATRIX
 
-| Capability | ChatGPT | Gemini | Gemini Notebook | Perplexity | ESC |
+| Capability | ChatGPT | Gemini | Notebook | Perplexity | **ESC** |
 |---|:---:|:---:|:---:|:---:|:---:|
-| AI chat | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Chat | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Files | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Learning | ✓ | ✓ | ✓ | △ | ✓ |
 | Research | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Citations | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Quiz / revision | ✓ | ✓ | ✓ | △ | ✓ |
-| Study planning | ✓ | ✓ | △ | △ | ✓ |
-| Specialist agents | △ | △ | △ | △ | **12** |
+| Quiz | ✓ | ✓ | ✓ | △ | ✓ |
+| Revision | ✓ | ✓ | ✓ | △ | ✓ |
+| Planning | ✓ | ✓ | △ | △ | ✓ |
+| **12 agents** | — | — | — | — | **✓** |
 | Scholarships | — | — | — | — | **✓** |
-| Internships / jobs | — | — | — | — | **✓** |
-| Teacher communication | — | — | — | — | **✓** |
-| Attendance follow-up | — | — | — | — | **✓** |
+| Jobs / ITI | — | — | — | — | **✓** |
+| Teacher chat | — | — | — | — | **✓** |
+| Attendance | — | — | — | — | **✓** |
 | Low-data focus | — | — | — | — | **✓** |
 
 ```mermaid
 flowchart LR
-    AI[General AI] --> L[Learn]
-    AI --> R[Research]
-    ESC[ESC] --> L2[Learn]
-    ESC --> P[Plan]
-    ESC --> V[Revise]
-    ESC --> O[Opportunities]
-    ESC --> S[Scholarships]
-    ESC --> C[Community]
-    ESC --> A[Attendance]
+G[GENERAL AI] --> L[Learn]
+G --> R[Research]
+E[ESC] --> L2[Learn]
+E --> P[Plan]
+E --> V[Revise]
+E --> O[Opportunity]
+E --> S[Scholarship]
+E --> C[Community]
+E --> A[Attendance]
 ```
 
 ---
 
-## 6. 100-TASK BENCHMARK
+## 06 · 12 AGENTS
+
+```mermaid
+flowchart TB
+E[ESC]
+E --> A1[StudyVault]
+E --> A2[ExamInsight]
+E --> A3[SuccessArchitect]
+E --> A4[Concept Clarifier]
+E --> A5[Problem Solver]
+E --> A6[QuizForge]
+E --> A7[Revision Coach]
+E --> A8[Flashcard Studio]
+E --> A9[MindMap Maker]
+E --> A10[Resource Scout]
+E --> A11[Paper Pattern Analyst]
+E --> A12[GuideMinds]
+```
+
+---
+
+## 07 · BENCHMARK
 
 ```mermaid
 flowchart LR
-    Q[100 Tasks] --> R[25 Research]
-    Q --> L[25 Learning]
-    Q --> V[20 Revision]
-    Q --> P[15 Problem Solving]
-    Q --> W[15 Productivity]
+Q[100 TASKS]
+Q --> R[25 Research]
+Q --> L[25 Learning]
+Q --> V[20 Revision]
+Q --> P[15 Problems]
+Q --> W[15 Productivity]
 ```
 
 ```mermaid
 flowchart LR
-    Q[Same Prompt] --> E[ESC]
-    Q --> C[ChatGPT]
-    Q --> G[Gemini]
-    Q --> N[Gemini Notebook]
-    Q --> P[Perplexity]
-    E --> R[Same Rubric]
-    C --> R
-    G --> R
-    N --> R
-    P --> R
+Q[Same Tasks] --> E[ESC]
+Q --> C[ChatGPT]
+Q --> G[Gemini]
+Q --> N[Notebook]
+Q --> P[Perplexity]
+E --> R[Same Rubric]
+C --> R
+G --> R
+N --> R
+P --> R
 ```
 
+| Metric | Weight |
+|---|---:|
+| Accuracy | 40% |
+| Completion | 30% |
+| Sources | 20% |
+| Instructions | 10% |
+
 ```mermaid
-pie title Score Weight
-    "Accuracy" : 40
-    "Completion" : 30
-    "Sources" : 20
-    "Instructions" : 10
+pie title Benchmark Weight
+"Accuracy" : 40
+"Completion" : 30
+"Sources" : 20
+"Instructions" : 10
 ```
+
+---
+
+## 08 · RESULTS
 
 | Tool | Score | Accuracy | Completion | Sources | Latency |
 |---|---:|---:|---:|---:|---:|
 | ESC | — | — | — | — | — |
 | ChatGPT | — | — | — | — | — |
 | Gemini | — | — | — | — | — |
-| Gemini Notebook | — | — | — | — | — |
+| Notebook | — | — | — | — | — |
 | Perplexity | — | — | — | — | — |
-
----
-
-## 7. ANALYTICS
 
 ```mermaid
 flowchart TB
-    D[Raw Data]
-    D --> O[Overall]
-    D --> C[Category]
-    D --> A[Accuracy]
-    D --> L[Latency]
-    O --> G1[Chart]
-    C --> G2[Chart]
-    A --> G3[Chart]
-    L --> G4[Chart]
+D[Raw Data] --> S[Score]
+D --> A[Accuracy]
+D --> C[Completion]
+D --> L[Latency]
+S --> G1[Overall]
+A --> G2[Accuracy]
+C --> G3[Completion]
+L --> G4[Latency]
 ```
 
 ---
 
-## 8. ACCESS
+## 09 · ACCESS
+
+| Tool | Free | Paid |
+|---|:---:|:---:|
+| ESC | ✓ | — |
+| ChatGPT | ✓ | ✓ |
+| Gemini | ✓ | ✓ |
+| Notebook | ✓ | ✓ |
+| Perplexity | ✓ | ✓ |
 
 ```mermaid
 flowchart LR
-    E[ESC] --> F[Free]
-    C[ChatGPT] --> CF[Free + Paid]
-    G[Gemini] --> GF[Free + Paid]
-    N[Gemini Notebook] --> NF[Free + Paid]
-    P[Perplexity] --> PF[Free + Paid]
+F[FREE ACCESS]
+F --> E[ESC]
+F --> C[ChatGPT]
+F --> G[Gemini]
+F --> N[Notebook]
+F --> P[Perplexity]
 ```
 
 ---
 
-## 9. SOURCES
+## 10 · DATA SOURCES
 
-- OpenAI Study Mode
-- OpenAI Deep Research
-- Google Gemini Help
-- Google — Gemini Notebook
-- Perplexity Help
-- Google One
-- Anthropic
+| Source | Data |
+|---|---|
+| OpenAI | Study Mode + Deep Research |
+| Google | Gemini + Notebook |
+| Perplexity | Search + citations |
+| Anthropic | Claude |
 
-## STATUS
+---
 
-`Capability data ✓` · `Benchmark results —`
+### STATUS
+
+`Data ✓` · `Benchmark —`
