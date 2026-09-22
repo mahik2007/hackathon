@@ -1,274 +1,220 @@
-# ESC --- Data Analytics
+# ESC — Data Analytics
 
-### Hackathon-ready • Minimal • Evidence-based
+## 1. GAP
 
-> **Goal:** compare ESC with major AI tools using compact capability
-> data + a reproducible benchmark.
-
-------------------------------------------------------------------------
-
-## 1. The Gap
-
-``` mermaid
+```mermaid
 flowchart LR
-    S[Student] --> G[Access gap]
-    T[Teacher] --> G
-    G --> SCH[Missed scholarships]
-    G --> CAR[Low career awareness]
-    G --> ATT[Late absence follow-up]
-    G --> COM[Scattered communication]
-    SCH --> E[ESC Connect]
-    CAR --> E
-    ATT --> E
-    COM --> E
+    S[Students] --> G[Access Gap]
+    T[Teachers] --> G
+    G --> A[Scholarships]
+    G --> B[Career Access]
+    G --> C[Attendance]
+    G --> D[Communication]
+    A --> E[ESC Connect]
+    B --> E
+    C --> E
+    D --> E
 ```
 
-  Challenge                 ESC Connect
-  ------------------------- --------------------------
-  Scattered scholarships    Eligibility + deadlines
-  Hidden local careers      Opportunities + channels
-  Manual attendance         Follow-up signals
-  Scattered communication   School groups
+```mermaid
+flowchart TB
+    P[Pooja] --> S[Scattered information]
+    S --> M[Missed opportunity]
+    M --> E[ESC Connect]
+    E --> F[Match]
+    F --> R[Reminder]
+    R --> L[Official Link]
+```
 
-------------------------------------------------------------------------
+| Gap | ESC Connect |
+|---|---|
+| Scholarships | Match + deadline |
+| Careers | Jobs + ITI + internships |
+| Attendance | Absence signal |
+| Communication | Groups + guidance |
 
-## 2. Product Map
+---
 
-``` mermaid
+## 2. PRODUCT MAP
+
+```mermaid
 flowchart TB
     E[ESC Connect]
     E --> O[Opportunities]
-    E --> S[Scholarship Finder]
-    E --> C[Academic Community]
-    E --> A[Attendance Follow-up]
-    O --> O1[Scholarships]
-    O --> O2[Internships / Jobs]
-    O --> O3[ITI / Careers]
-    S --> S1[Profile Match]
-    S --> S2[Deadlines]
-    C --> C1[Guidance Channels]
-    C --> C2[Teacher Groups]
-    A --> A1[Absence Signal]
+    E --> S[Scholarships]
+    E --> C[Community]
+    E --> A[Attendance]
+    O --> O1[Jobs]
+    O --> O2[Internships]
+    O --> O3[ITI]
+    S --> S1[Profile]
+    S --> S2[Documents]
+    S --> S3[Deadline]
+    C --> C1[Teacher]
+    C --> C2[Student]
+    A --> A1[Absence]
+    A --> A2[Follow-up]
 ```
 
-------------------------------------------------------------------------
+---
 
-## 3. Core Journey
+## 3. USER FLOW
 
-``` mermaid
+```mermaid
+flowchart LR
+    U[Student] --> P[Profile]
+    P --> M[Match]
+    M --> V[View]
+    V --> S[Save]
+    S --> R[Reminder]
+    R --> A[Apply]
+```
+
+```mermaid
 sequenceDiagram
-    participant P as Student
+    participant S as Student
     participant E as ESC Connect
     participant T as Teacher
-
-    P->>E: Profile
-    E-->>P: Matches
-    P->>E: Save + checklist
-    P->>T: Ask
-    T-->>P: Guidance
+    S->>E: Profile
+    E-->>S: Matches
+    S->>E: Save
+    S->>T: Ask
+    T-->>S: Guidance
     T->>E: Attendance
-    E-->>T: Follow-up signal
+    E-->>T: Follow-up
 ```
 
-------------------------------------------------------------------------
+---
 
-# 4. LLM / AI Tool Comparison
+## 4. ATTENDANCE
 
-**Legend:** ✓ = documented capability • △ = limited / plan-dependent •
---- = not a core documented focus
-
-  --------------------------------------------------------------------------------
-  Capability        ChatGPT       Gemini       Gemini     Perplexity    **ESC**
-                                              Notebook                
-  --------------- ------------ ------------ ------------ ------------ ------------
-  AI chat              ✓            ✓            ✓            ✓            ✓
-
-  PDF / files          ✓            ✓            ✓            ✓            ✓
-
-  Step learning        ✓            ✓            ✓            △            ✓
-
-  Research             ✓            ✓         **Core**     **Core**        ✓
-
-  Source /             ✓            ✓         **Core**     **Core**        ✓
-  citations                                                           
-
-  Quiz / practice      ✓            ✓            ✓            △            ✓
-
-  Revision             ✓            ✓            ✓            △            ✓
-
-  Study planning       ✓            ✓            △            △            ✓
-
-  Specialist           △            △            △            △          **12**
-  agents                                                              
-
-  Scholarship         ---          ---          ---          ---         **✓**
-  matching                                                            
-
-  Internship          ---          ---          ---          ---         **✓**
-  discovery                                                           
-
-  Teacher             ---          ---          ---          ---         **✓**
-  communication                                                       
-
-  Attendance          ---          ---          ---          ---         **✓**
-  follow-up                                                           
-
-  Low-data            ---          ---          ---          ---         **✓**
-  education focus                                                     
-  --------------------------------------------------------------------------------
-
-### Key analytical distinction
-
-``` mermaid
+```mermaid
 flowchart LR
-    A[General AI] --> B[Answer / Research / Learn]
-    C[ESC] --> D[Learn]
-    C --> E[Plan]
-    C --> F[Revise]
-    C --> G[Opportunities]
-    C --> H[Scholarships]
-    C --> I[Communicate]
-    C --> J[Attendance]
+    T[Teacher] --> A[Attendance]
+    A --> D{3+ absences?}
+    D -->|Yes| F[Follow-up]
+    D -->|No| C[Continue]
+    F --> P[Parent contact]
 ```
 
-------------------------------------------------------------------------
+---
 
-# 5. Benchmark Design
+## 5. ESC vs AI TOOLS
 
-``` mermaid
+| Capability | ChatGPT | Gemini | Gemini Notebook | Perplexity | ESC |
+|---|:---:|:---:|:---:|:---:|:---:|
+| AI chat | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Files | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Learning | ✓ | ✓ | ✓ | △ | ✓ |
+| Research | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Citations | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Quiz / revision | ✓ | ✓ | ✓ | △ | ✓ |
+| Study planning | ✓ | ✓ | △ | △ | ✓ |
+| Specialist agents | △ | △ | △ | △ | **12** |
+| Scholarships | — | — | — | — | **✓** |
+| Internships / jobs | — | — | — | — | **✓** |
+| Teacher communication | — | — | — | — | **✓** |
+| Attendance follow-up | — | — | — | — | **✓** |
+| Low-data focus | — | — | — | — | **✓** |
+
+```mermaid
 flowchart LR
-    P[Same prompt] --> T1[ESC]
-    P --> T2[ChatGPT]
-    P --> T3[Gemini]
-    P --> T4[Gemini Notebook]
-    P --> T5[Perplexity]
-    T1 --> R[Common rubric]
-    T2 --> R
-    T3 --> R
-    T4 --> R
-    T5 --> R
-    R --> D[Measured data]
+    AI[General AI] --> L[Learn]
+    AI --> R[Research]
+    ESC[ESC] --> L2[Learn]
+    ESC --> P[Plan]
+    ESC --> V[Revise]
+    ESC --> O[Opportunities]
+    ESC --> S[Scholarships]
+    ESC --> C[Community]
+    ESC --> A[Attendance]
 ```
 
-### 100-task set
+---
 
-  Category              Tasks
-  ----------------- ---------
-  Research                 25
-  Learning                 25
-  Revision                 20
-  Problem solving          15
-  Productivity             15
-  **Total**           **100**
+## 6. 100-TASK BENCHMARK
 
-### Score
+```mermaid
+flowchart LR
+    Q[100 Tasks] --> R[25 Research]
+    Q --> L[25 Learning]
+    Q --> V[20 Revision]
+    Q --> P[15 Problem Solving]
+    Q --> W[15 Productivity]
+```
 
-  Metric             Weight
-  -------------- ----------
-  Accuracy              40%
-  Completion            30%
-  Sources               20%
-  Instructions          10%
-  **Total**        **100%**
+```mermaid
+flowchart LR
+    Q[Same Prompt] --> E[ESC]
+    Q --> C[ChatGPT]
+    Q --> G[Gemini]
+    Q --> N[Gemini Notebook]
+    Q --> P[Perplexity]
+    E --> R[Same Rubric]
+    C --> R
+    G --> R
+    N --> R
+    P --> R
+```
 
-> **Do not enter estimated scores.** Fill benchmark results only after
-> identical tests.
+```mermaid
+pie title Score Weight
+    "Accuracy" : 40
+    "Completion" : 30
+    "Sources" : 20
+    "Instructions" : 10
+```
 
-------------------------------------------------------------------------
+| Tool | Score | Accuracy | Completion | Sources | Latency |
+|---|---:|---:|---:|---:|---:|
+| ESC | — | — | — | — | — |
+| ChatGPT | — | — | — | — | — |
+| Gemini | — | — | — | — | — |
+| Gemini Notebook | — | — | — | — | — |
+| Perplexity | — | — | — | — | — |
 
-# 6. Analytics Output
+---
 
-``` mermaid
+## 7. ANALYTICS
+
+```mermaid
 flowchart TB
-    D[Raw task data] --> S[Overall score]
-    D --> C[Category score]
-    D --> L[Latency]
+    D[Raw Data]
+    D --> O[Overall]
+    D --> C[Category]
     D --> A[Accuracy]
-    S --> G1[Overall chart]
-    C --> G2[Category chart]
-    L --> G3[Latency chart]
-    A --> G4[Accuracy chart]
+    D --> L[Latency]
+    O --> G1[Chart]
+    C --> G2[Chart]
+    A --> G3[Chart]
+    L --> G4[Chart]
 ```
 
-### Final measured table
+---
 
-  Tool                Overall   Accuracy   Completion   Sources   Avg. latency
-  ----------------- --------- ---------- ------------ --------- --------------
-  **ESC**                 ---        ---          ---       ---            ---
-  ChatGPT                 ---        ---          ---       ---            ---
-  Gemini                  ---        ---          ---       ---            ---
-  Gemini Notebook         ---        ---          ---       ---            ---
-  Perplexity              ---        ---          ---       ---            ---
+## 8. ACCESS
 
-------------------------------------------------------------------------
+```mermaid
+flowchart LR
+    E[ESC] --> F[Free]
+    C[ChatGPT] --> CF[Free + Paid]
+    G[Gemini] --> GF[Free + Paid]
+    N[Gemini Notebook] --> NF[Free + Paid]
+    P[Perplexity] --> PF[Free + Paid]
+```
 
-# 7. Access / Pricing Snapshot
+---
 
-  -----------------------------------------------------------------------
-  Product                    Free access                   Paid reference
-  ----------------- ----------------------------- -----------------------
-  **ESC**                         ✓                   No ESC subscription
-                                                                    layer
+## 9. SOURCES
 
-  ChatGPT                         ✓                          Plus \$20/mo
+- OpenAI Study Mode
+- OpenAI Deep Research
+- Google Gemini Help
+- Google — Gemini Notebook
+- Perplexity Help
+- Google One
+- Anthropic
 
-  Gemini                          ✓                     AI Pro \$19.99/mo
+## STATUS
 
-  Gemini Notebook                 ✓                 Included in Google AI
-                                                      plans with expanded
-                                                                   access
-
-  Perplexity                      ✓                   Pro / Education Pro
-
-  Claude                          ✓                 Pro pricing varies by
-                                                             current plan
-  -----------------------------------------------------------------------
-
-**Important:** this is an access comparison, not a claim that
-competitors require payment.
-
-------------------------------------------------------------------------
-
-# 8. Source Data
-
-  -----------------------------------------------------------------------
-  Source                              Verified data used
-  ----------------------------------- -----------------------------------
-  OpenAI Study Mode                   Step-by-step learning, files,
-                                      quizzes, flashcard-style review
-
-  OpenAI Deep Research                Multi-step research + sources
-
-  Google Gemini Help                  Deep Research, Search, files, Gmail
-                                      / Drive sources
-
-  Google                              NotebookLM renamed **Gemini
-                                      Notebook**; research-focused
-
-  Perplexity Help                     Pro Search, multi-source synthesis,
-                                      citations, file analysis
-
-  Perplexity Plans                    Free Standard + Pro + Education Pro
-
-  Google One                          AI Pro \$19.99/mo; expanded Gemini
-                                      / Gemini Notebook
-
-  Anthropic                           Claude free/pro ecosystem
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-# 9. Data Rules
-
--   Same prompt
--   Same source
--   Same task
--   Same model tier where possible
--   Same rubric
--   Record date
--   Record latency
--   No fabricated scores
--   No subjective winner
-
-**Status:** capability data = documented; benchmark results = pending
-measurement.
+`Capability data ✓` · `Benchmark results —`
